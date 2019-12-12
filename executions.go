@@ -87,9 +87,13 @@ func (p *Bitflyer) Executions() {
 
 		var execs []executions.Execution
 		execs = *exec
-		lastExecID = execs[len(execs)-1].ID
+		l := len(execs) - 1
+		if l < 1 {
+			break
+		}
+		lastExecID = execs[l].ID
 
-		progress := execs[len(execs)-1].ExecDate.Time
+		progress := execs[l].ExecDate.Time
 		fmt.Printf("progress... %d - %+v\n", lastID, progress.Format("2016/01/02 15:04"))
 		lastYear = progress.Year()
 		if lastYear != 2019 {
