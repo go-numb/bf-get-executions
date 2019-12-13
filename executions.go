@@ -38,8 +38,9 @@ type Bitflyer struct {
 // Executions gets executions
 func (p *Bitflyer) Executions() {
 	var (
-		lastID, lastExecID int
-		lastYear           int
+		lastID     int
+		lastExecID int // Docs:: 過去 100 日分（API docでは31日分）の履歴をご確認いただけます。全履歴の確認をご希望される場合は、お取引レポートをダウンロードしてください。
+		lastYear   int
 	)
 
 	f, err := os.OpenFile(
